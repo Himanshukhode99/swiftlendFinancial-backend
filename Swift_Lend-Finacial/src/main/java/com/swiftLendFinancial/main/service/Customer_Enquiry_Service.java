@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.swiftLendFinancial.main.model.CustomerEnquiry;
 
-public interface Enquiry_Service {
+public interface Customer_Enquiry_Service {
 
 	CustomerEnquiry save(CustomerEnquiry c);
 

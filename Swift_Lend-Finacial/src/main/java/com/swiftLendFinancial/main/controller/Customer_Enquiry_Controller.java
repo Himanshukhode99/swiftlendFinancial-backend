@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.swiftLendFinancial.main.model.CustomerEnquiry;
-import com.swiftLendFinancial.main.service.Enquiry_Service;
+import com.swiftLendFinancial.main.service.Customer_Enquiry_Service;
 
 
 
 
 @CrossOrigin("*")
 @RestController
-public class CustomerController {
+public class Customer_Enquiry_Controller {
 	
 	@Autowired
-	Enquiry_Service enquiry_Service;
+	Customer_Enquiry_Service enquiry_Service;
 	
 	
 	@PostMapping("/saveEnquiry")
