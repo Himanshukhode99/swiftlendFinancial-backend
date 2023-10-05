@@ -3,6 +3,9 @@ package com.swiftLendFinancial.main.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.swiftLendFinancial.main.model.CustomerEnquiry;
@@ -11,19 +14,29 @@ import com.swiftLendFinancial.main.service.Customer_Enquiry_Service;
 
 @Service
 public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
+	@Value("${spring.mail.username}")
+	private String fromMail;
 	
 	@Autowired
 	Customer_Enquiry_Repository enquiry_Repository;
 
+	@Autowired
+	JavaMailSender jms;
+	
 	@Override
 	public CustomerEnquiry save(CustomerEnquiry c) {
 
+		SimpleMailMessage sm=new SimpleMailMessage();
+		sm.setFrom(fromMail);
+		sm.setTo(c.getEmail());
+		sm.setSubject("Enquiry Feedback");
+		sm.setText("Thank You For Visiting Us");
+		jms.send(sm);
 		
-		if(c.getCibil()>750) {
-		enquiry_Repository.save(c);
-		return c; 
-		}
-		return null;
+		return enquiry_Repository.save(c);
+		
+
+		
 		
 	}
 
