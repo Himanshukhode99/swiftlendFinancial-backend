@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swiftLendFinancial.main.model.Customer;
 import com.swiftLendFinancial.main.model.CustomerDocuments;
+import com.swiftLendFinancial.main.model.User;
 import com.swiftLendFinancial.main.repository.CustomerRepository;
 import com.swiftLendFinancial.main.service.CustomerService;
 
@@ -38,13 +39,12 @@ public class CustomerServiceImpl implements CustomerService
 	public Customer saveCustomer(String fieldText, String customerdoc, MultipartFile adhar, MultipartFile pan,
 			MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense,
 			MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation,
-			MultipartFile form16) throws IOException 
+			MultipartFile form16, String user) throws IOException 
 	{
 		ObjectMapper obj = new ObjectMapper();
 		Customer customer;
 		customer=obj.readValue(fieldText, Customer.class);
-		if(customerdoc!=null)
-		{
+	    User use=obj.readValue(user,User.class);
 		CustomerDocuments cd=obj.readValue(customerdoc,CustomerDocuments.class);
 		cd.setAadharCard(adhar.getBytes());
 		cd.setPanCard(pan.getBytes());
@@ -58,16 +58,18 @@ public class CustomerServiceImpl implements CustomerService
 		cd.setIncomeTaxReturn(incometaxreturn.getBytes());
 		
 		customer.setDocuments(cd);
-		}
+		
 		
 		int pass = ran.nextInt(ul-ll);
-		customer.user.setPassword(pass);
-		customer.user.setUsername(customer.getCustomerEmail());
+		use.setPassword(pass);
+		use.setUsername(customer.getCustomerEmail());
+		customer.setUser(use);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(customer.getCustomerEmail());
 		sm.setSubject("your username and password");
 		sm.setText("UserName:" + customer.getCustomerEmail() + " Password:" + customer.user.getPassword());
+		
 		jms.send(sm);
 		cr.save(customer);
 		return customer;

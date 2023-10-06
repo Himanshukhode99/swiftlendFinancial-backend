@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import com.swiftLendFinancial.main.model.Customer;
+import com.swiftLendFinancial.main.model.User;
 import com.swiftLendFinancial.main.service.CustomerService;
 
 @RestController
@@ -26,7 +27,8 @@ public class CustomerController
 	@PostMapping("/saveCustomer")
 	public ResponseEntity<Customer> saveCustomer(
 			@RequestPart("personaldetails")String fieldText,
-			@RequestPart(name="customerdoc",required = false)String customerdoc,
+			@RequestPart("user")String user,
+			@RequestPart("customerdoc")String customerdoc,
 			@RequestPart("adhar")MultipartFile adhar,
 			@RequestPart("pan")MultipartFile pan,
 			@RequestPart("profilephoto")MultipartFile photo,
@@ -40,7 +42,7 @@ public class CustomerController
 			
 			) throws IOException
 	{
-		Customer customer=cs.saveCustomer(fieldText,customerdoc,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,incometaxreturn, carquatation,form16);
+		Customer customer=cs.saveCustomer(fieldText,customerdoc,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,incometaxreturn, carquatation,form16,user);
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 		
 	}
