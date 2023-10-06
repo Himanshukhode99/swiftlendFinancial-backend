@@ -1,19 +1,17 @@
 package com.swiftLendFinancial.main.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-public class Customer 
+public class Customer
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +24,17 @@ public class Customer
 	private String customerDob;
 	private String customerGender;
 	private long customerMobileno;
-	private String customerGmail;
+	private String customerEmail;
+	private String username;
+	private int password;
+	//@OneToOne
+	//private CustomerLocalAddress localAddress;
+	//@OneToOne
+	//private CustomerPermanentAddress permanentAddress;
+	//@OneToOne
+	//private CustomerBankDetails bankDetails;
+	@OneToOne(cascade = CascadeType.ALL)
+	private CustomerDocuments documents;
+	
 
 }

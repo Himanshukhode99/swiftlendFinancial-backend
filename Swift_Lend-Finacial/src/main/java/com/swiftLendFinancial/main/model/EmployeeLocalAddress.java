@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,19 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class EmployeeDocuments 
+public class EmployeeLocalAddress 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int documentId;
-	@Lob
-	private byte[] profilePhoto;
-	@Lob
-	private byte[] aadharCard;
-	@Lob
-	private byte[] panCard;
-	@Lob
-	private byte[] sign;
- 	
+	private int addressId;
+	private String areaName;
+	private String cityName;
+	private String districtName;
+	private String landMark;
+	private String stateName;
+	private int pincode;
 
 }

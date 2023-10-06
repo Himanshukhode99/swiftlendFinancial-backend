@@ -13,20 +13,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
-public class PermanentAddress 
+public class EmployeePermanetAddress
 {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int localAddressId;
-	private String HouseNo;
-	private String landMark;
-	private String streetName;
+	private int addressId;
+	private String areaName;
 	private String cityName;
-	private String taluka;
-	private String district;
-	private String state;
-	private String country;
+	private String districtName;
+	private String landMark;
+	private String stateName;
 	private int pincode;
+
 }
