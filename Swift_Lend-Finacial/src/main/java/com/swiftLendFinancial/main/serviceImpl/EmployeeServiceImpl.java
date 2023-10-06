@@ -57,17 +57,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		int pass = ran.nextInt(ul-ll);
 
-		e.setPassword(pass);
+		e.user.setPassword(pass);
 
-		System.out.println(e.getPassword());
+		//System.out.println(e.getPassword());
 
-		e.setUsername(e.getEmployeeEmail());
+		e.user.setUsername(e.getEmployeeEmail());
 
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(e.getEmployeeEmail());
 		sm.setSubject("your username and password");
-		sm.setText("UserName:" + e.getEmployeeEmail() + " Password:" + e.getPassword());
+		sm.setText("UserName:" + e.getEmployeeEmail() + " Password:" + e.user.getPassword());
 		jms.send(sm);
 		er.save(e);
 		return e;

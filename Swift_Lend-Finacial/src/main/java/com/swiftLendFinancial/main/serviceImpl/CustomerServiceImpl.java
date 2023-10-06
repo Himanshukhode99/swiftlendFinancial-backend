@@ -61,13 +61,13 @@ public class CustomerServiceImpl implements CustomerService
 		}
 		
 		int pass = ran.nextInt(ul-ll);
-		customer.setPassword(pass);
-		customer.setUsername(customer.getCustomerEmail());
+		customer.user.setPassword(pass);
+		customer.user.setUsername(customer.getCustomerEmail());
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(customer.getCustomerEmail());
 		sm.setSubject("your username and password");
-		sm.setText("UserName:" + customer.getCustomerEmail() + " Password:" + customer.getPassword());
+		sm.setText("UserName:" + customer.getCustomerEmail() + " Password:" + customer.user.getPassword());
 		jms.send(sm);
 		cr.save(customer);
 		return customer;

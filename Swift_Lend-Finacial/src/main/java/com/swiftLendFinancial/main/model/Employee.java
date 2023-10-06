@@ -25,8 +25,9 @@ public class Employee
 	private String employeeDob;
 	private String employeeEmail; 
     private String employeegender;
-	private String username;
-	private int password;
+    @OneToOne(cascade = CascadeType.ALL)
+	public User user;
+	
     private String employeeRole;
     
     @OneToOne(cascade = CascadeType.ALL)

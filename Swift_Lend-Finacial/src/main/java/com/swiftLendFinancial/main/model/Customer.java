@@ -25,8 +25,10 @@ public class Customer
 	private String customerGender;
 	private long customerMobileno;
 	private String customerEmail;
-	private String username;
-	private int password;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	public User user;
+	
 	//@OneToOne
 	//private CustomerLocalAddress localAddress;
 	//@OneToOne
