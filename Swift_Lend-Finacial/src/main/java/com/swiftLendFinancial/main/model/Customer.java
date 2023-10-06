@@ -30,7 +30,7 @@ public class Customer
 	private long customerMobileno;
 	private String customerEmail;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	public User user;
 	
 	//@OneToOne

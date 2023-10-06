@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService
 	public Customer saveCustomer(String fieldText, String customerdoc, MultipartFile adhar, MultipartFile pan,
 			MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense,
 			MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation,
-			MultipartFile form16, String user) throws IOException 
+			MultipartFile form16, String user) throws Exception
 	{
 		ObjectMapper obj = new ObjectMapper();
 		Customer customer;
@@ -64,6 +64,8 @@ public class CustomerServiceImpl implements CustomerService
 		use.setPassword(pass);
 		use.setUsername(customer.getCustomerEmail());
 		customer.setUser(use);
+		System.out.println(customer);
+		cr.save(customer);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(customer.getCustomerEmail());
@@ -71,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService
 		sm.setText("UserName:" + customer.getCustomerEmail() + " Password:" + customer.user.getPassword());
 		
 		jms.send(sm);
-		cr.save(customer);
+		
 		return customer;
 		
 		

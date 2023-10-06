@@ -1,7 +1,5 @@
 package com.swiftLendFinancial.main.controller;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +38,7 @@ public class CustomerController
 			@RequestPart("form16")MultipartFile form16,
 			@RequestPart("incometaxreturn")MultipartFile incometaxreturn
 			
-			) throws IOException
+			) throws Exception
 	{
 		Customer customer=cs.saveCustomer(fieldText,customerdoc,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,incometaxreturn, carquatation,form16,user);
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);

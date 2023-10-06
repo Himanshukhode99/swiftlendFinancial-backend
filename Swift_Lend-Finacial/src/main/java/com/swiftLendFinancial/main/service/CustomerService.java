@@ -11,7 +11,7 @@ import com.swiftLendFinancial.main.model.User;
 
 public interface CustomerService {
 
-	Customer saveCustomer(String fieldText, String customerdoc, MultipartFile adhar, MultipartFile pan, MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense, MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation, MultipartFile form16, String user) throws IOException;
+	Customer saveCustomer(String fieldText, String customerdoc, MultipartFile adhar, MultipartFile pan, MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense, MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation, MultipartFile form16, String user) throws Exception;
 
 	Iterable<Customer> getallCustomer();
 
