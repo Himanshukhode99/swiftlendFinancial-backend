@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,11 +18,12 @@ import com.swiftLendFinancial.main.model.Customer;
 import com.swiftLendFinancial.main.service.CustomerService;
 
 @RestController
+@RequestMapping("/Swift_Lend_Financial")
 public class CustomerController 
 {
 	@Autowired
 	CustomerService cs;
-	@PostMapping("/save")
+	@PostMapping("/saveCustomer")
 	public ResponseEntity<Customer> saveCustomer(
 			@RequestPart("personaldetails")String fieldText,
 			@RequestPart(name="customerdoc",required = false)String customerdoc,

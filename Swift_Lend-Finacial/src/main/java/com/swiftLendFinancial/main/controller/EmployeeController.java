@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,11 +21,12 @@ import com.swiftLendFinancial.main.model.Employee;
 import com.swiftLendFinancial.main.service.EmployeeService;
 
 @RestController
+@RequestMapping("/Swift_Lend_Financial")
 public class EmployeeController 
 {
 	@Autowired
 	EmployeeService es;
-	@PostMapping("/save")
+	@PostMapping("/saveemp")
 	public ResponseEntity<Employee> saveemp(
 			@RequestPart("personalDetails")String fieldText,
 			@RequestPart("empDoc")String empDoc,
@@ -39,7 +41,7 @@ public class EmployeeController
 		return new ResponseEntity<Employee>(emp,HttpStatus.OK);
 		
 	}
-	@GetMapping("/getalldata")
+	@GetMapping("/getallemp")
 	public ResponseEntity<Iterable<Employee>> getAllEmployee()
 	{
 		Iterable<Employee> employee=es.getallEmployee();
