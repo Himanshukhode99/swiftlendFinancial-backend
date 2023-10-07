@@ -26,8 +26,6 @@ public class CustomerController
 	@PostMapping("/saveCustomer")
 	public ResponseEntity<Customer> saveCustomer(
 			@RequestPart("personaldetails")String fieldText,
-			@RequestPart("user")String user,
-			@RequestPart("documentsUpload")String customerdoc,
 			@RequestPart("aadharcard")MultipartFile adhar,
 			@RequestPart("pancard")MultipartFile pan,
 			@RequestPart("profile_photo")MultipartFile photo,
@@ -36,12 +34,12 @@ public class CustomerController
 			@RequestPart("driving_license")MultipartFile drivingLiecense,    
 			@RequestPart("bank_statement")MultipartFile bankstatement,
 			@RequestPart("car_quatation")MultipartFile carquatation,
-			@RequestPart("form16")MultipartFile form16,  
+			@RequestPart("form16")MultipartFile form16, 
 			@RequestPart("income_tax_return")MultipartFile incometaxreturn
 			 
 			) throws Exception
 	{
-		Customer customer=cs.saveCustomer(fieldText ,user,customerdoc,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,incometaxreturn, carquatation,form16);
+		Customer customer=cs.saveCustomer(fieldText ,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,incometaxreturn, carquatation,form16);
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 		
 	}  

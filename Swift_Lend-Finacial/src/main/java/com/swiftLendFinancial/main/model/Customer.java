@@ -40,6 +40,7 @@ public class Customer
 	private CustomerPermanentAddress permenantAddress;
 	@OneToOne (cascade = CascadeType.ALL)
 	private CustomerBankDetails bankDetails;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerDocuments documents;
 	 

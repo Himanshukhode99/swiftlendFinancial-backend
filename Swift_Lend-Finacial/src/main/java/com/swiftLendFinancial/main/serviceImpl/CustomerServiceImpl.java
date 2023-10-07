@@ -36,17 +36,22 @@ public class CustomerServiceImpl implements CustomerService
 	int ll = 1000;
 	
 	@Override
-	public Customer saveCustomer(String fieldText , String user, String customerdoc, MultipartFile adhar, MultipartFile pan,
+	public Customer saveCustomer(String fieldText ,  MultipartFile adhar, MultipartFile pan,
 			MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense,
 			MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation,
 			MultipartFile form16) throws Exception
 	{
+		
+		
+		
+	
 		ObjectMapper obj = new ObjectMapper();
 		Customer customer;
 		customer=obj.readValue(fieldText, Customer.class);
 		
-	    User use=obj.readValue(user,User.class);
-		CustomerDocuments cd=obj.readValue(customerdoc,CustomerDocuments.class);
+		 System.out.println(customer.getBankDetails().getAcholdername());
+	    
+		CustomerDocuments cd=new CustomerDocuments();
 		cd.setAadharcard(adhar.getBytes());
 		cd.setPancard(pan.getBytes());
 		cd.setProfile_photo(photo.getBytes());
@@ -59,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService
 		cd.setIncome_tax_return(incometaxreturn.getBytes());
 		
 		customer.setDocuments(cd);
-		
+		User use=new User();
 		
 		int pass = ran.nextInt(ul-ll);
 		use.setPassword(pass);
