@@ -23,7 +23,10 @@ public class CustomerEnquiry  {
 	private long mob;
 	private String address;
 	private String pan;
-	private int cibil;
+	
+	private int cibilscore;
+	private String cibilstatus;
+	private String enquiryStatus;
 	
 	
 

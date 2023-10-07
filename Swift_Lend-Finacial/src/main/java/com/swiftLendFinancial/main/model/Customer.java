@@ -1,5 +1,6 @@
 package com.swiftLendFinancial.main.model;
 
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,14 +34,15 @@ public class Customer
 	@OneToOne(cascade = CascadeType.ALL)
 	public User user;
 	
-	//@OneToOne
-	//private CustomerLocalAddress localAddress;
-	//@OneToOne
-	//private CustomerPermanentAddress permanentAddress;
-	//@OneToOne
-	//private CustomerBankDetails bankDetails;
+	@OneToOne
+	private CustomerLocalAddress localAddress;
+	@OneToOne
+	private CustomerPermanentAddress permanentAddress;
+	@OneToOne
+	private CustomerBankDetails bankDetails;
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerDocuments documents;
 	
+
 
 }

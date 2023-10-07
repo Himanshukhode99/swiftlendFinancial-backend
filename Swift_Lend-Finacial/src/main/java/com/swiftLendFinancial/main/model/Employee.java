@@ -32,11 +32,11 @@ public class Employee
     
     @OneToOne(cascade = CascadeType.ALL)
     private EmployeeDocuments employeeDocument;
-    //@OneToOne(cascade = CascadeType.ALL)
-    //private EmployeeBankDetails employeeBankDetails;
-    //@OneToOne(cascade = CascadeType.ALL)
-    //private PermanetAddress employeepermanetaddr;
-    //@OneToOne(cascade = CascadeType.ALL)
-    //private LocalAddress employeeelocaladdr;
+    @OneToOne(cascade = CascadeType.ALL)
+    private EmployeeBankDetails employeeBankDetails;
+    @OneToOne(cascade = CascadeType.ALL)
+    private EmployeePermanetAddress employeepermanetaddr;
+    @OneToOne(cascade = CascadeType.ALL)
+    private EmployeeLocalAddress employeeelocaladdr;
     
 }
