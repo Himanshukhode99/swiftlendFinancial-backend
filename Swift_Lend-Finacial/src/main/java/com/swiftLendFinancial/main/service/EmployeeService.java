@@ -11,7 +11,7 @@ import com.swiftLendFinancial.main.model.Employee;
 public interface EmployeeService {
 
 	public Employee saveemp(String fieldText, MultipartFile profileimage, MultipartFile adhar, MultipartFile pan,
-			MultipartFile sign, String empDoc) throws JsonMappingException, JsonProcessingException, IOException, Exception;
+			MultipartFile sign, String empDoc, String user) throws JsonMappingException, JsonProcessingException, IOException, Exception;
 
 	public Iterable<Employee> getallEmployee();
 

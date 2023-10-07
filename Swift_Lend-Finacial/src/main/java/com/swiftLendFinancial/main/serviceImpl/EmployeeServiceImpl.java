@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swiftLendFinancial.main.model.Employee;
 import com.swiftLendFinancial.main.model.EmployeeDocuments;
+import com.swiftLendFinancial.main.model.User;
 import com.swiftLendFinancial.main.repository.EmployeeRepository;
 import com.swiftLendFinancial.main.service.EmployeeService;
 
@@ -36,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee saveemp(String fieldText, MultipartFile profileimage, MultipartFile adhar, MultipartFile pan,
-			MultipartFile sign, String empdoc) throws Exception {
+			MultipartFile sign, String empdoc,String user) throws Exception {
 
 		ObjectMapper obj = new ObjectMapper();
 		Employee e;
@@ -56,13 +57,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 		e.setEmployeeDocument(ed);
 
 		int pass = ran.nextInt(ul-ll);
-
-		e.user.setPassword(pass);
+ 
+		User u=obj.readValue(user,User.class);
+		u.setPassword(pass);
 
 		//System.out.println(e.getPassword());
 
-		e.user.setUsername(e.getEmployeeEmail());
-
+		u.setUsername(e.getEmployeeEmail());
+        e.setUser(u);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(e.getEmployeeEmail());

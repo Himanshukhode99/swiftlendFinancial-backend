@@ -30,14 +30,14 @@ public class EmployeeController
 	public ResponseEntity<Employee> saveemp(
 			@RequestPart("personalDetails")String fieldText,
 			@RequestPart("empDoc")String empDoc,
-			
+			@RequestPart("user")String user,
 			@RequestPart(name="profileImage",required =true)MultipartFile profileimage,
 			@RequestPart("adhar")MultipartFile adhar,
 			@RequestPart("pan")MultipartFile pan,
 			@RequestPart("sign")MultipartFile sign) throws Exception, JsonProcessingException, IOException 
 	{
 		
-		Employee emp=es.saveemp(fieldText,profileimage,adhar,pan,sign,empDoc);
+		Employee emp=es.saveemp(fieldText,profileimage,adhar,pan,sign,empDoc,user);
 		return new ResponseEntity<Employee>(emp,HttpStatus.OK);
 		
 	}
