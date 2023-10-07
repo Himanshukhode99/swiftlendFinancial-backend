@@ -14,13 +14,14 @@ import lombok.NoArgsConstructor;
 public class CustomerBankDetails
 {
 	@Id
-	private long customerAccountNo;
-	private String accountHolderName;
+	private long accountNo;
+	private String Acholdername;
 	private String bankName;
-	private String branchName;
-	private long IFSCCode;
-	private String accountType;
+	private String bankBranchName;
+	private long bankifsccode;
+	private String accounttype; 
 	
 	
 
-}
+} 
+  

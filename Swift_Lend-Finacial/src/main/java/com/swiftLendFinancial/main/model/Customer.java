@@ -21,28 +21,28 @@ public class Customer
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
-	private String customerFirstName;
-	private String customerMiddleName;
-	private String customerLastName;
-	private String customerMotherName;
-	private String noOfDependends;
-	private String customerDob;
-	private String customerGender;
-	private long customerMobileno;
-	private String customerEmail;
+	private String first_name;
+	private String middle_name;
+	private String last_name;
+	private String mother_name;
+	private String noOfdependent;
+	private String dob;
+	private String gender;
+	private long mobile;
+	private String email;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	public User user;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerLocalAddress localAddress;
-	@OneToOne
-	private CustomerPermanentAddress permanentAddress;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	private CustomerPermanentAddress permenantAddress;
+	@OneToOne (cascade = CascadeType.ALL)
 	private CustomerBankDetails bankDetails;
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerDocuments documents;
-	
+	 
 
 
 }

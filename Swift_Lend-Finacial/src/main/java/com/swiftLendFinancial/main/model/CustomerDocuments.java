@@ -20,25 +20,25 @@ public class CustomerDocuments
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int documentId;
 	@Lob
-	private byte[] aadharCard;
+	private byte[] aadharcard;
 	@Lob
-	private byte[] panCard;
+	private byte[] pancard;
 	@Lob
-	private byte[] profilePhoto;
+	private byte[] profile_photo;
 	@Lob
 	private byte[] signature;
 	@Lob
-	private byte[] salarySlip;
+	private byte[] salary_slip;
 	@Lob
-	private byte[] drivingLicense;
+	private byte[] driving_license;
 	@Lob
-	private byte[] bankStatement;
+	private byte[] bank_statement;
 	@Lob
-	private byte[] carQuatation;
+	private byte[] car_quatation;
 	@Lob
 	private byte[] form16;
 	@Lob
-	private byte[] incomeTaxReturn;
+	private byte[] income_tax_return;
 	
 
 }

@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService
 	JavaMailSender jms;
 
 	@Autowired
-	CustomerRepository cr;
+	CustomerRepository cr; 
 
 	Random ran = new Random();
 
@@ -36,41 +36,42 @@ public class CustomerServiceImpl implements CustomerService
 	int ll = 1000;
 	
 	@Override
-	public Customer saveCustomer(String fieldText, String customerdoc, MultipartFile adhar, MultipartFile pan,
+	public Customer saveCustomer(String fieldText , String user, String customerdoc, MultipartFile adhar, MultipartFile pan,
 			MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense,
 			MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation,
-			MultipartFile form16, String user) throws Exception
+			MultipartFile form16) throws Exception
 	{
 		ObjectMapper obj = new ObjectMapper();
 		Customer customer;
 		customer=obj.readValue(fieldText, Customer.class);
+		
 	    User use=obj.readValue(user,User.class);
 		CustomerDocuments cd=obj.readValue(customerdoc,CustomerDocuments.class);
-		cd.setAadharCard(adhar.getBytes());
-		cd.setPanCard(pan.getBytes());
-		cd.setProfilePhoto(photo.getBytes());
+		cd.setAadharcard(adhar.getBytes());
+		cd.setPancard(pan.getBytes());
+		cd.setProfile_photo(photo.getBytes());
 		cd.setSignature(sign.getBytes());
-		cd.setSalarySlip(salaryslip.getBytes());
-		cd.setDrivingLicense(drivingLiecense.getBytes());
-		cd.setBankStatement(bankstatement.getBytes());
-		cd.setCarQuatation(carquatation.getBytes());
+		cd.setSalary_slip(salaryslip.getBytes());
+		cd.setDriving_license(drivingLiecense.getBytes());
+		cd.setBank_statement(bankstatement.getBytes());
+		cd.setAadharcard(carquatation.getBytes());
 		cd.setForm16(form16.getBytes());
-		cd.setIncomeTaxReturn(incometaxreturn.getBytes());
+		cd.setIncome_tax_return(incometaxreturn.getBytes());
 		
 		customer.setDocuments(cd);
 		
 		
 		int pass = ran.nextInt(ul-ll);
 		use.setPassword(pass);
-		use.setUsername(customer.getCustomerEmail());
+		use.setUsername(customer.getEmail());
 		customer.setUser(use);
 		System.out.println(customer);
 		cr.save(customer);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
-		sm.setTo(customer.getCustomerEmail());
+		sm.setTo(customer.getEmail());
 		sm.setSubject("your username and password");
-		sm.setText("UserName:" + customer.getCustomerEmail() + " Password:" + customer.user.getPassword());
+		sm.setText("UserName:" + customer.getEmail() + " Password:" + customer.user.getPassword());
 		
 		jms.send(sm);
 		

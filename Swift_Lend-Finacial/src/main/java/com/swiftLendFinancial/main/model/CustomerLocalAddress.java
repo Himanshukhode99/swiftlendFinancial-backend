@@ -18,15 +18,15 @@ public class CustomerLocalAddress
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int localAddressId;
-	private String HouseNo;
-	private String landMark;
-	private String streetName;
-	private String cityName;
+	private String house_number;
+	private String landmark;
+	private String street_name;
+	private String city_name;
 	private String taluka;
 	private String district;
 	private String state;
 	private String country;
-	private int pincode;
+	private int pin_code;
 	
 	
 
