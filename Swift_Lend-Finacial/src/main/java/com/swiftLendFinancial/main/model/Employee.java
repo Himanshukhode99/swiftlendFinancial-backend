@@ -25,18 +25,20 @@ public class Employee
 	private String employeeDob;
 	private String employeeEmail; 
     private String employeegender;
-    @OneToOne(cascade = CascadeType.ALL)
-	public User user;
-	
+   
     private String employeeRole;
-    
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeeDocuments employeeDocument;
+   	public User user;
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeeBankDetails employeeBankDetails;
+    private EmployeeLocalAddress employeeelocaladdr;
     @OneToOne(cascade = CascadeType.ALL)
     private EmployeePermanetAddress employeepermanetaddr;
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeeLocalAddress employeeelocaladdr;
+    private EmployeeBankDetails employeeBankDetails;
+    @OneToOne(cascade = CascadeType.ALL)
+    private EmployeeDocuments employeeDocument;
+   
+    
+   
     
 }

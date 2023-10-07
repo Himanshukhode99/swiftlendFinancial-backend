@@ -37,12 +37,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee saveemp(String fieldText, MultipartFile profileimage, MultipartFile adhar, MultipartFile pan,
-			MultipartFile sign, String empdoc,String user) throws Exception {
+			MultipartFile sign) throws Exception {
 
 		ObjectMapper obj = new ObjectMapper();
 		Employee e;
 
-		EmployeeDocuments ed = obj.readValue(empdoc, EmployeeDocuments.class);
+		EmployeeDocuments ed =new EmployeeDocuments();
 
 		ed.setProfilePhoto(profileimage.getBytes());
 
@@ -58,20 +58,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		int pass = ran.nextInt(ul-ll);
  
-		User u=obj.readValue(user,User.class);
+		User u=new User();
 		u.setPassword(pass);
 
 		//System.out.println(e.getPassword());
 
 		u.setUsername(e.getEmployeeEmail());
         e.setUser(u);
+        er.save(e);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(e.getEmployeeEmail());
 		sm.setSubject("your username and password");
 		sm.setText("UserName:" + e.getEmployeeEmail() + " Password:" + e.user.getPassword());
 		jms.send(sm);
-		er.save(e);
+		
 		return e;
 	}
 
