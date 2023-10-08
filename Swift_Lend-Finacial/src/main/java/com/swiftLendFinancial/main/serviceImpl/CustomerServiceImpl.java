@@ -36,11 +36,9 @@ public class CustomerServiceImpl implements CustomerService
 	int ll = 1000;
 	
 	@Override
-	public Customer saveCustomer(String fieldText ,  MultipartFile adhar, MultipartFile pan,
-			MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense,
-			MultipartFile bankstatement, MultipartFile incometaxreturn, MultipartFile carquatation,
-			MultipartFile form16) throws Exception
+	public Customer saveCustomer(String fieldText, MultipartFile adhar, MultipartFile pan, MultipartFile photo, MultipartFile sign, MultipartFile salaryslip, MultipartFile drivingLiecense, MultipartFile bankstatement, MultipartFile carquatation, MultipartFile form16, MultipartFile incometaxreturn ) throws Exception
 	{
+		
 		
 		
 		
@@ -49,29 +47,45 @@ public class CustomerServiceImpl implements CustomerService
 		Customer customer;
 		customer=obj.readValue(fieldText, Customer.class);
 		
-		 System.out.println(customer.getBankDetails().getAcholdername());
-	    
-		CustomerDocuments cd=new CustomerDocuments();
-		cd.setAadharcard(adhar.getBytes());
-		cd.setPancard(pan.getBytes());
-		cd.setProfile_photo(photo.getBytes());
-		cd.setSignature(sign.getBytes());
-		cd.setSalary_slip(salaryslip.getBytes());
-		cd.setDriving_license(drivingLiecense.getBytes());
-		cd.setBank_statement(bankstatement.getBytes());
-		cd.setAadharcard(carquatation.getBytes());
-		cd.setForm16(form16.getBytes());
-		cd.setIncome_tax_return(incometaxreturn.getBytes());
 		
-		customer.setDocuments(cd);
+		
+		 
+		CustomerDocuments cd=new CustomerDocuments();
+		
+		
+		byte[] aaddhar  = obj.readValue(adhar.getBytes(), byte[].class);
+		byte[] pann = obj.readValue(pan.getBytes(), byte[].class);
+		byte[] profilepp = obj.readValue(photo.getBytes(), byte[].class);
+		byte[] signn = obj.readValue(sign.getBytes(), byte[].class);
+		byte[] sala = obj.readValue(salaryslip.getBytes(), byte[].class);
+		byte[] dl = obj.readValue(drivingLiecense.getBytes(), byte[].class);
+		byte[] bs = obj.readValue(bankstatement.getBytes(), byte[].class);
+		byte[] cq = obj.readValue(carquatation.getBytes(), byte[].class);
+		byte[] f16 = obj.readValue(form16.getBytes(), byte[].class);
+		byte[] itr = obj.readValue(incometaxreturn.getBytes(), byte[].class);
+		
+		cd.setAadharcard(aaddhar);
+		cd.setPancard(pann);
+		cd.setProfile_photo(profilepp);
+		cd.setSignature(signn);
+		cd.setSalary_slip(sala);
+		cd.setDriving_license(dl);
+		cd.setBank_statement(bs);
+		cd.setAadharcard(cq);
+		cd.setForm16(f16);
+		cd.setIncome_tax_return(itr);
+		
+		System.out.println(customer.getDocuments().getAadharcard());
+		
+		customer.setDocuments(cd); 
 		User use=new User();
 		
 		int pass = ran.nextInt(ul-ll);
 		use.setPassword(pass);
 		use.setUsername(customer.getEmail());
-		customer.setUser(use);
+	customer.setUser(use);
 		System.out.println(customer);
-		cr.save(customer);
+//		cr.save(customer);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(customer.getEmail());

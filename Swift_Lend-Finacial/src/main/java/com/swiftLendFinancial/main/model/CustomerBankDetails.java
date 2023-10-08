@@ -15,7 +15,7 @@ public class CustomerBankDetails
 {
 	@Id
 	private long accountNo;
-	private String Acholdername;
+	private String acholdername;
 	private String bankName;
 	private String bankBranchName;
 	private long bankifsccode;

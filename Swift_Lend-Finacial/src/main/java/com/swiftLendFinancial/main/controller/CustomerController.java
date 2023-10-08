@@ -39,7 +39,11 @@ public class CustomerController
 			 
 			) throws Exception
 	{
-		Customer customer=cs.saveCustomer(fieldText ,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,incometaxreturn, carquatation,form16);
+		System.out.println(adhar.getOriginalFilename());
+		Customer customer=cs.saveCustomer(fieldText ,adhar,pan,photo,sign,salaryslip,drivingLiecense,bankstatement,carquatation,form16,incometaxreturn);
+//	    Customer cust=new Customer();
+		
+		
 		return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 		
 	}  

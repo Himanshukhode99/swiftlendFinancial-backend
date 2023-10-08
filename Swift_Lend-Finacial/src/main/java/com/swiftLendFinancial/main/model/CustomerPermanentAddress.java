@@ -18,7 +18,7 @@ public class CustomerPermanentAddress
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int localAddressId;
-	private String house_number;
+	private int house_number;
 	private String landmark;
 	private String street_name;
 	private String city_name;
