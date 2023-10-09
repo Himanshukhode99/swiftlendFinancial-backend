@@ -17,12 +17,16 @@ public class EmployeePermanetAddress
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int addressId;
-	private String areaName;
-	private String cityName;
-	private String districtName;
-	private String landMark;
-	private String stateName;
-	private int pincode;
+	private int localAddressId;
+	private int house_number;
+	private String landmark;
+	private String street_name;
+	private String city_name;
+	private String taluka;
+	private String district;
+	private String state;
+	private String country;
+	private int pin_code;
+	
 
 }

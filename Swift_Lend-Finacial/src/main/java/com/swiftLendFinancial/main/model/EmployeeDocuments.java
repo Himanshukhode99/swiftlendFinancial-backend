@@ -20,13 +20,13 @@ public class EmployeeDocuments
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int documentId;
 	@Lob
-	private byte[] profilePhoto;
+	private byte[] aadharcard;
 	@Lob
-	private byte[] aadharCard;
+	private byte[] pancard;
 	@Lob
-	private byte[] panCard;
+	private byte[] profile_photo;
 	@Lob
-	private byte[] sign;
+	private byte[] signature;
  	
 
 }

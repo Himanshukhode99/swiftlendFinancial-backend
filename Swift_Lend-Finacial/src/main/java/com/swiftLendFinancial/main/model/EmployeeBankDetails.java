@@ -15,15 +15,13 @@ import lombok.NoArgsConstructor;
 @Entity
 public class EmployeeBankDetails 
 {
- @Id
- @GeneratedValue(strategy=GenerationType.AUTO)
- private int bankdetailsId;
- private long employeeAccNo;
- private String employeeBankname;
- private String employeeBranchName;
- private long employeeIFSCNo;
- private long employeeBankCode;
- private long employeeCIFNo;
+	@Id
+	private long accountNo;
+	private String acholdername;
+	private String bankName;
+	private String bankBranchName;
+	private long bankifsccode;
+	private String accounttype; 
  
   
 }

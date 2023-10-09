@@ -10,7 +10,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.swiftLendFinancial.main.model.Employee;
@@ -42,37 +41,38 @@ public class EmployeeServiceImpl implements EmployeeService {
 		ObjectMapper obj = new ObjectMapper();
 		Employee e;
 
-		EmployeeDocuments ed =new EmployeeDocuments();
-
-		ed.setProfilePhoto(profileimage.getBytes());
-
-		ed.setAadharCard(adhar.getBytes());
-
-		ed.setPanCard(pan.getBytes());
-
-		ed.setSign(sign.getBytes());
-
 		e = obj.readValue(fieldText, Employee.class);
+		EmployeeDocuments ed = new EmployeeDocuments();
 
-		e.setEmployeeDocument(ed);
+		ed.setProfile_photo(profileimage.getBytes());
 
-		int pass = ran.nextInt(ul-ll);
- 
-		User u=new User();
+		ed.setAadharcard(adhar.getBytes());
+
+		ed.setPancard(pan.getBytes());
+
+		ed.setSignature(sign.getBytes());
+
+	
+
+		e.setDocuments(ed);
+
+		int pass = ran.nextInt(ul - ll);
+
+		User u = new User();
 		u.setPassword(pass);
 
-		//System.out.println(e.getPassword());
+		// System.out.println(e.getPassword());
 
-		u.setUsername(e.getEmployeeEmail());
-        e.setUser(u);
-        er.save(e);
+		u.setUsername(e.getEmail());
+		e.setUser(u);
+		er.save(e);
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
-		sm.setTo(e.getEmployeeEmail());
+		sm.setTo(e.getEmail());
 		sm.setSubject("your username and password");
-		sm.setText("UserName:" + e.getEmployeeEmail() + " Password:" + e.user.getPassword());
+		sm.setText("UserName:" + e.getEmail() + " Password:" + e.user.getPassword());
 		jms.send(sm);
-		
+
 		return e;
 	}
 

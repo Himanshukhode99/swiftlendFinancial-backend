@@ -21,22 +21,22 @@ public class Employee
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int employeeId;
 	private String employeeName;
-	private long employeeMobileNumber;
-	private String employeeDob;
-	private String employeeEmail; 
-    private String employeegender;
+	private long mobile;
+	private String dob;
+	private String email; 
+    private String gender;
    
-    private String employeeRole;
+    private String designation;
     @OneToOne(cascade = CascadeType.ALL)
    	public User user;
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeeLocalAddress employeeelocaladdr;
+    private EmployeeLocalAddress localAddress;
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeePermanetAddress employeepermanetaddr;
+    private EmployeePermanetAddress permenantAddress;
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeeBankDetails employeeBankDetails;
+    private EmployeeBankDetails bankDetails;
     @OneToOne(cascade = CascadeType.ALL)
-    private EmployeeDocuments employeeDocument;
+    private EmployeeDocuments documents;
    
     
    
