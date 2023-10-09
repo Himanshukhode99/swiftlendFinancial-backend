@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -55,6 +57,19 @@ public class Customer_Enquiry_Controller {
 		
 		return new ResponseEntity<CustomerEnquiry>(customer, HttpStatus.OK);
 		
+	}
+	@DeleteMapping("/deleteCustomerEnquiry/{email}")
+	public ResponseEntity<CustomerEnquiry> deleteCustomerEnquiry(@PathVariable String email)
+	{
+		CustomerEnquiry ce=enquiry_Service.deleteCustomerEnquiry(email);
+		return new ResponseEntity<CustomerEnquiry>(ce,HttpStatus.OK);
+	}
+	
+	@PutMapping("/updateCustomerEnquiry")
+	public ResponseEntity<CustomerEnquiry> updateCustomerEnquiry(@RequestBody CustomerEnquiry customer_enquiry)
+	{
+		CustomerEnquiry ce=enquiry_Service.save(customer_enquiry);
+		return new ResponseEntity<CustomerEnquiry>(ce,HttpStatus.OK);
 	}
 
 }

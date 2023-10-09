@@ -12,4 +12,6 @@ public interface Customer_Enquiry_Service {
 
 	CustomerEnquiry getEnquiriesByMail(String email);
 
+	CustomerEnquiry deleteCustomerEnquiry(String email);
+
 }

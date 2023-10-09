@@ -52,4 +52,10 @@ public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
 		return enquiry_Repository.findByEmail(email); 
 	}
 
+	@Override
+	public CustomerEnquiry deleteCustomerEnquiry(String email) {
+	
+		return enquiry_Repository.deleteByEmail(email);
+	}
+
 }

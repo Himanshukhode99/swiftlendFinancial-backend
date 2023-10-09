@@ -6,9 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.swiftLendFinancial.main.model.CustomerEnquiry;
 
 @Repository
-public interface Customer_Enquiry_Repository extends JpaRepository<CustomerEnquiry, Integer> {
+public interface Customer_Enquiry_Repository extends JpaRepository<CustomerEnquiry,String> {
 
-	CustomerEnquiry findByEmail(String email);
+	public CustomerEnquiry findByEmail(String email);
+
+	public CustomerEnquiry deleteByEmail(String email);
 
 }
  

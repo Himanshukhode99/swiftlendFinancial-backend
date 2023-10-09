@@ -23,10 +23,10 @@ public class CustomerEnquiry  {
 	private long mob;
 	private String address;
 	private String pan;
-	
+	private long loanamount;
 	private int cibilscore;
 	private String cibilstatus;
-	private String enquiryStatus;
+	
 	
 	
 
