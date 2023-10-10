@@ -24,15 +24,17 @@ public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
 	JavaMailSender jms;
 	
 	@Override
-	public CustomerEnquiry save(CustomerEnquiry c) {
-
+	public CustomerEnquiry save(CustomerEnquiry c) 
+	{
+        if(c.getCibilscore()==0)
+        {
 		SimpleMailMessage sm=new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(c.getEmail());
 		sm.setSubject("Enquiry Feedback");
 		sm.setText("Thank You For Visiting Us");
 		jms.send(sm);
-		
+        }
 		return enquiry_Repository.save(c);
 		
 
