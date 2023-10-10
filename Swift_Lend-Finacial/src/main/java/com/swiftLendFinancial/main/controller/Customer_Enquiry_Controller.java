@@ -2,6 +2,8 @@ package com.swiftLendFinancial.main.controller;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,7 @@ import com.swiftLendFinancial.main.service.Customer_Enquiry_Service;
 
 
 @CrossOrigin("*")
+@Transactional
 @RestController
 @RequestMapping("/Swift_Lend_Financial")
 public class Customer_Enquiry_Controller {
@@ -58,7 +61,7 @@ public class Customer_Enquiry_Controller {
 		return new ResponseEntity<CustomerEnquiry>(customer, HttpStatus.OK);
 		
 	}
-	@DeleteMapping("/deleteCustomerEnquiry/{email}")
+	@DeleteMapping("/deleteCustomerEnquiry/{email}") 
 	public ResponseEntity<CustomerEnquiry> deleteCustomerEnquiry(@PathVariable String email)
 	{
 		CustomerEnquiry ce=enquiry_Service.deleteCustomerEnquiry(email);

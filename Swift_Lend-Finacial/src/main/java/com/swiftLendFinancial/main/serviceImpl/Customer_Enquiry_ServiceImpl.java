@@ -35,6 +35,25 @@ public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
 		sm.setText("Thank You For Visiting Us");
 		jms.send(sm);
         }
+        
+        
+        if(c.getCibilscore()!=0)
+        {
+		SimpleMailMessage sm=new SimpleMailMessage();
+		sm.setFrom(fromMail);
+		sm.setTo(c.getEmail());
+		sm.setSubject("Approved For loan");
+		sm.setText("Now You Can Fill The Loan Applicattion Form");
+		jms.send(sm);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
 		return enquiry_Repository.save(c);
 		
 
