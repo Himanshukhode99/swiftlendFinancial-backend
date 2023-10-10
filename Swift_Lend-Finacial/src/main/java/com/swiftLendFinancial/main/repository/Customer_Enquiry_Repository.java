@@ -10,7 +10,7 @@ public interface Customer_Enquiry_Repository extends JpaRepository<CustomerEnqui
 
 	public CustomerEnquiry findByEmail(String email);
 
-	public CustomerEnquiry deleteByEmail(String email);
+	public void deleteByEmail(String email);
 
 }
  

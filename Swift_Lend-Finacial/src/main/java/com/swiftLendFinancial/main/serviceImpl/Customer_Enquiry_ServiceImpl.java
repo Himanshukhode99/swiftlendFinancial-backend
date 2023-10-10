@@ -74,9 +74,10 @@ public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
 	}
 
 	@Override
-	public CustomerEnquiry deleteCustomerEnquiry(String email) {
+	public void deleteCustomerEnquiry(String email) {
 	
-		return enquiry_Repository.deleteByEmail(email);
+		enquiry_Repository.deleteById(email);
+		return;
 	}
 
 }

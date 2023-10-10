@@ -61,11 +61,16 @@ public class Customer_Enquiry_Controller {
 		return new ResponseEntity<CustomerEnquiry>(customer, HttpStatus.OK);
 		
 	}
+<<<<<<< HEAD
 	@DeleteMapping("/deleteCustomerEnquiry/{email}") 
 	public ResponseEntity<CustomerEnquiry> deleteCustomerEnquiry(@PathVariable String email)
+=======
+	@DeleteMapping("/deleteCustomerEnquiry/{email}")
+	public String deleteCustomerEnquiry(@PathVariable String email)
+>>>>>>> stash
 	{
-		CustomerEnquiry ce=enquiry_Service.deleteCustomerEnquiry(email);
-		return new ResponseEntity<CustomerEnquiry>(ce,HttpStatus.OK);
+		enquiry_Service.deleteCustomerEnquiry(email);
+		return "dalated data";
 	}
 	
 	@PutMapping("/updateCustomerEnquiry")
