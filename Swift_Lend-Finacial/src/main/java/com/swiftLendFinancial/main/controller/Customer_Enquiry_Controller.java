@@ -64,10 +64,7 @@ public class Customer_Enquiry_Controller {
 
 	@DeleteMapping("/deleteCustomerEnquiry/{email}")
 	public String deleteCustomerEnquiry(@PathVariable String email)
-<<<<<<< HEAD
-=======
 
->>>>>>> stash
 	{
 		enquiry_Service.deleteCustomerEnquiry(email);
 		return "dalated data";

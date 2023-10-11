@@ -1,6 +1,9 @@
 package com.swiftLendFinancial.main.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.swiftLendFinancial.main.model.Accepted;
@@ -15,11 +18,30 @@ public class Accepted_service_impl implements Accepted_Service {
 	
 	@Autowired
 	Accepted_Repository ar;
+	
+	@Value("${spring.mail.username}")
+	private String fromMail;
+	
+	@Autowired
+	JavaMailSender jms;
+	
 
 	@Override
 	public Accepted saveAccepted(Accepted a) {
 		
+		
+		SimpleMailMessage sm=new SimpleMailMessage();
+		sm.setFrom(fromMail);
+		sm.setTo(a.getEmail());
+		sm.setSubject("Approved For loan");
+		sm.setText("Now You Can Fill The Loan Applicattion Form");
+		jms.send(sm);
+		
+		
 		return ar.save(a);
+		
+		
+		
 	}
 
 	
