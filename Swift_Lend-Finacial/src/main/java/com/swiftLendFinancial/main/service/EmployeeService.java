@@ -15,6 +15,10 @@ public interface EmployeeService {
 
 	public Iterable<Employee> getallEmployee();
 
+	public Employee getSingleEmp(int employeeId);
+
+	public Employee deleteemp(int employeeId);
+
 
 	
 

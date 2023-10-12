@@ -82,4 +82,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return er.findAll();
 	}
 
+	@Override
+	public Employee getSingleEmp(int employeeId) {
+		Employee e = er.findById(employeeId);
+		
+		return e;
+	}
+
+	@Override
+	public Employee deleteemp(int employeeId) {
+		Employee e1=er.deleteById(employeeId);
+		return e1;
+	}
+
 }
