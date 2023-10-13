@@ -42,4 +42,11 @@ public class Rejected_Service_Impl implements Rejected_Service
 		return reject;
 	}
 
+	@Override
+	public Iterable<Rejected> getallRejected() {
+	
+		return rr.findAll();
+	}
+	
+
 }

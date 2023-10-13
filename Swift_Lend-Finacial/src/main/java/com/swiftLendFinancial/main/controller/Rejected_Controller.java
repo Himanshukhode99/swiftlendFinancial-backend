@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.swiftLendFinancial.main.model.Employee;
 import com.swiftLendFinancial.main.model.Rejected;
 import com.swiftLendFinancial.main.service.Rejected_Service;
 @CrossOrigin("*")
@@ -27,4 +29,10 @@ public class Rejected_Controller {
 		return new ResponseEntity<Rejected>(rj,HttpStatus.OK) ;
 	}
 
+	@GetMapping("/getallrejected")
+	public ResponseEntity<Iterable<Rejected>> getAllRejected()
+	{
+		Iterable<Rejected> rejected=rs.getallRejected();
+		return new ResponseEntity<Iterable<Rejected>>(rejected,HttpStatus.OK);
+	}
 }
