@@ -32,7 +32,7 @@ public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
 		sm.setFrom(fromMail);
 		sm.setTo(c.getEmail());
 		sm.setSubject("Enquiry Feedback");
-		sm.setText("Hello,"+c.getName()+"\n Thank you for reaching out and expressing interest in our services"+"\n \n Thanks & Regards \n {SwiftLend Financial}");
+		sm.setText("Hello,"+c.getFirst_name()+" "+c.getLast_name()+"\n Thank you for reaching out and expressing interest in our services"+"\n \n Thanks & Regards \n {SwiftLend Financial}");
 		jms.send(sm);
         }
         

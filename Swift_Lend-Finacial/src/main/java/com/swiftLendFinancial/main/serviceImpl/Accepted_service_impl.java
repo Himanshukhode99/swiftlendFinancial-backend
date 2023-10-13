@@ -38,7 +38,7 @@ public class Accepted_service_impl implements Accepted_Service {
 		sm.setFrom(fromMail);
 		sm.setTo(a.getEmail());
 		sm.setSubject("Approved For loan");
-		sm.setText("Hello,"+a.getName()+"\n Congratulation! Based on the information submitted by you,"
+		sm.setText("Hello,"+a.getFirst_name()+" "+a.getLast_name()+"\n Congratulation! Based on the information submitted by you,"
 		+"\n we are pleased to inform you of approval for car loan, for more details visit SwiftLend Branch."+
 				"\n Sincerely,"+"\n {Loan Officer}");
 		jms.send(sm);

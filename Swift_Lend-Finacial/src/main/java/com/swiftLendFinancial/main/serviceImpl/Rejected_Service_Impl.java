@@ -32,7 +32,7 @@ public class Rejected_Service_Impl implements Rejected_Service
 		sm.setFrom(fromMail);
 		sm.setTo(reject.getEmail());
 		sm.setSubject("Reject loan application");
-		sm.setText("Hello,"+r.getName()+
+		sm.setText("Hello,"+r.getFirst_name()+" "+r.getLast_name()+
 				"We regret to inform you that your loan apllication for maorttage loan to our organization has been declined."
 				+"The reason for this decline is that you do not meet the required criteria of cibil."+"\n Cibil Scor:-"+reject.getCibilscore()+"\n CibilStatus:-"+reject.getCibilstatus()+
 				"Sincerely,"+"\n {Loan Officer}");
