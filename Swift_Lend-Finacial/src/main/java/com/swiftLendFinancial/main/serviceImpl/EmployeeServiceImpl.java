@@ -69,8 +69,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(e.getEmail());
-		sm.setSubject("your username and password");
-		sm.setText("UserName:" + e.getEmail() + " Password:" + e.user.getPassword());
+		sm.setSubject("Employee username and password");
+		sm.setText("Dear,"+e.getEmployeeName()+"\n Welcome to SwiftLend Financial"+"\n It's great to have you on board and I'm certain you'll gain a lot of new experience in this role."
+				+ "\n You may begin using your username and password by visiting our website(Login Section)"
+		+"\n \n UserName:" + e.getEmail() + "\n Password:" + e.user.getPassword()+
+		"\n Should you have any questions, don't hesitate to contact me for help"+
+		"\n All The Best"+"\n {Manager's Name}");
 		jms.send(sm);
 
 		return e;
