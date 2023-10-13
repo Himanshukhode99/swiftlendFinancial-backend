@@ -1,6 +1,7 @@
 package com.swiftLendFinancial.main.serviceImpl;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,12 @@ public class CustomerServiceImpl implements CustomerService
 	public Iterable<Customer> getallCustomer() {
 		
 		return cr.findAll();
+	}
+
+	@Override
+	public Optional<Customer> getSingleCustomer(String email) {
+
+		return cr.findById(email);
 	}
 
 }

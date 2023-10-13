@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Customer
 {
-	@Id
+
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
 	private String first_name;
@@ -31,6 +31,8 @@ public class Customer
 	private Date dob;
 	private String gender;
 	private long mobile;
+	
+	@Id
 	private String email;
 	
 	@OneToOne(cascade = CascadeType.ALL)

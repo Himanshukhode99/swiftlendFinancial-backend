@@ -16,11 +16,13 @@ import lombok.NoArgsConstructor;
 public class Rejected  {
 	
 	
-	private String name;
+	private String first_name;
+	private String middle_name;
+	private String last_name;
 	@Id
 	private String email;
 	private int age;
-	private long mob;
+	private long mobile;
 	private String address;
 	private String pan;
 	private long loanamount;

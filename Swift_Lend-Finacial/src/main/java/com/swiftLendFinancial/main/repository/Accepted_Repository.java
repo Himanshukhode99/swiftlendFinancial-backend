@@ -7,6 +7,10 @@ import com.swiftLendFinancial.main.model.Accepted;
 import com.swiftLendFinancial.main.model.Rejected;
 
 @Repository
-public interface Accepted_Repository extends JpaRepository<Accepted, Integer> {
+public interface Accepted_Repository extends JpaRepository<Accepted, String> {
+
+	//public Accepted findByEmail(String email);
+
+	
 
 }

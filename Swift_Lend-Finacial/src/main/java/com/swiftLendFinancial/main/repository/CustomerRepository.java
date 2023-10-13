@@ -8,7 +8,7 @@ import com.swiftLendFinancial.main.model.Customer;
 
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer,Integer>
+public interface CustomerRepository extends JpaRepository<Customer,String>
 {
 
 }
