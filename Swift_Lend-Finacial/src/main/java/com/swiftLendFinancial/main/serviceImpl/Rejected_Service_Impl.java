@@ -46,6 +46,7 @@ public class Rejected_Service_Impl implements Rejected_Service
 	public Iterable<Rejected> getallRejected() {
 	
 		return rr.findAll();
+	
 	}
 	
 

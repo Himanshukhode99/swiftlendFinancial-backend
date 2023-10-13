@@ -37,5 +37,6 @@ public class Rejected_Controller {
 		
 		Iterable<Rejected> rejected=rs.getallRejected();
 		return new ResponseEntity<Iterable<Rejected>>(rejected,HttpStatus.OK);
+	
 	}
 }

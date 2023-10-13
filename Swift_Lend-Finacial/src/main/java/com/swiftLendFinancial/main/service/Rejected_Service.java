@@ -6,6 +6,6 @@ public interface Rejected_Service {
 
 	Rejected saveRejected(Rejected r);
 
-	public Iterable<Rejected> getallRejected();
+	 public Iterable<Rejected> getallRejected();
 
 }
