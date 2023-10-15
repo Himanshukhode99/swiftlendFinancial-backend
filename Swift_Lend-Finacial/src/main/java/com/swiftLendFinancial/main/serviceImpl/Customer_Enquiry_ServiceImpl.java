@@ -1,6 +1,7 @@
 package com.swiftLendFinancial.main.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.swiftLendFinancial.main.exception.EnquiryAlreadyExists;
 import com.swiftLendFinancial.main.model.CustomerEnquiry;
 import com.swiftLendFinancial.main.repository.Customer_Enquiry_Repository;
 import com.swiftLendFinancial.main.service.Customer_Enquiry_Service;
@@ -48,13 +50,19 @@ public class Customer_Enquiry_ServiceImpl implements Customer_Enquiry_Service {
         }
         
         
+        CustomerEnquiry customerenq;
+        Optional<CustomerEnquiry> customer=enquiry_Repository.findById(c.getEmail());
+        if(customer.isPresent())
+        {
+        	throw new EnquiryAlreadyExists("Email Was Already Registerd..");
         
+        }
+        else 
+        {
+        	customerenq=enquiry_Repository.save(c);
+		}
         
-        
-        
-        
-        
-		return enquiry_Repository.save(c);
+		return customerenq;
 		
 
 		

@@ -1,6 +1,7 @@
 package com.swiftLendFinancial.main.serviceImpl;
 
 import java.io.IOException;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.swiftLendFinancial.main.exception.EmployeeAlreadyExists;
 import com.swiftLendFinancial.main.model.Employee;
 import com.swiftLendFinancial.main.model.EmployeeDocuments;
 import com.swiftLendFinancial.main.model.User;
@@ -65,7 +67,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		u.setUsername(e.getEmail());
 		e.setUser(u);
-		er.save(e);
+		Optional<Employee> Emp=er.findByEmail(e.getEmail());
+		if(Emp.isPresent())
+		{
+			throw new EmployeeAlreadyExists("Employee Was Already Registerd..!");
+		
+		}
+		else 
+		{
+			er.save(e);
+		}
 		SimpleMailMessage sm = new SimpleMailMessage();
 		sm.setFrom(fromMail);
 		sm.setTo(e.getEmail());
